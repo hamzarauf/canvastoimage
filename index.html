@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+  	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="can.js"></script>
+  <script type="text/javascript" src="imageconverter.js"></script>
+  
+</head>
+<body>
+
+<div id="widget" class="widget" style="padding:40px; width:300px; height:300px; background:#ecd128;border:1px dotted #333">
+    <h2> Hello ! It's Hamza Here </h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt officiis commodi exercitationem placeat beatae, nihil, non rem aspernatur porro laborum ipsam minus quis, sapiente quo totam, facilis voluptates nostrum obcaecati?</p>
+</div>
+<br/>
+<input type="button" id="btnSave" value="Save PNG"/>
+
+<div id="img-out"></div>
+<script type="text/javascript">
+	$(function() { 
+    $("#btnSave").click(function() { 
+        html2canvas($("#widget"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+                document.body.appendChild(canvas);
+
+                // Convert and download as image file:///C:/Users/hamza/Desktop/domtoimage/index.html
+                Canvas2Image.saveAsPNG(canvas); 
+                $("#img-out").append(canvas);
+                // Clean up 
+                //document.body.removeChild(canvas);
+            }
+        });
+    });
+}); 
+
+</script>
+</body>
+</html>
